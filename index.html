@@ -1,294 +1,1089 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Majid & Bela</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<title>Majid & Bela</title>
 
-    html {
-      scroll-behavior: smooth;
-    }
+<style>
+* {
+  box-sizing: border-box;
+}
 
-    body {
-      margin: 0;
-      font-family: Georgia, serif;
-      background: #f8f4eb;
-      color: #333;
-    }
+html {
+  scroll-behavior: smooth;
+}
 
-    .cover {
-      min-height: 100vh;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      overflow: hidden;
-      background: #1717a8;
-    }
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  background: #f7f2e8;
+  color: #333;
+  overflow-x: hidden;
+}
 
-    .cover img {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0.45;
-    }
+body.locked {
+  height: 100vh;
+  overflow: hidden;
+}
 
-    .cover::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,80,0.25);
-    }
+/* ================= COVER ================= */
 
-    .cover-content {
-      position: relative;
-      z-index: 2;
-      color: white;
-      padding: 25px;
-    }
+.cover {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+  background: #1818a8;
+}
 
-    .subtitle {
-      letter-spacing: 7px;
-      font-size: 18px;
-      margin-bottom: 20px;
-    }
+.cover-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
-    h1 {
-      font-size: 70px;
-      margin: 10px 0 30px;
-      line-height: 1;
-    }
+.cover-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 70, 0.48);
+}
 
-    .date {
-      font-size: 22px;
-      margin: 15px 0;
-    }
+.cover-content {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: 700px;
+  padding: 30px 20px;
+  color: white;
+}
 
-    .location {
-      font-size: 20px;
-      line-height: 1.6;
-    }
+.small-title {
+  font-size: 16px;
+  letter-spacing: 7px;
+  margin-bottom: 20px;
+}
 
-    #openInvitation {
-      margin-top: 30px;
-      padding: 17px 38px;
-      border: none;
-      border-radius: 40px;
-      background: #e5ca91;
-      color: #333;
-      font-size: 18px;
-      cursor: pointer;
-      box-shadow: 0 5px 15px rgba(0,0,0,.25);
-    }
+.cover h1 {
+  font-size: clamp(55px, 14vw, 100px);
+  line-height: .9;
+  margin: 0 0 35px;
+  font-weight: normal;
+}
 
-    #openInvitation:active {
-      transform: scale(.96);
-    }
+.cover-date {
+  font-size: 20px;
+  margin-bottom: 18px;
+}
 
-    section {
-      padding: 70px 20px;
-      text-align: center;
-      max-width: 900px;
-      margin: auto;
-    }
+.cover-location {
+  font-size: 19px;
+  line-height: 1.7;
+}
 
-    .couple-photo {
-      width: 100%;
-      max-width: 500px;
-      border-radius: 15px;
-      margin: 20px auto;
-    }
+.open-button {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 17px 40px;
+  border: none;
+  border-radius: 50px;
+  background: #e5ca91;
+  color: #403b30;
+  font-family: inherit;
+  font-size: 18px;
+  cursor: pointer;
+  box-shadow: 0 7px 20px rgba(0,0,0,.3);
+}
 
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-    }
+.open-button:active {
+  transform: scale(.96);
+}
 
-    .gallery img {
-      width: 100%;
-      border-radius: 10px;
-    }
+/* ================= ISI ================= */
 
-    .hidden-content {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: 1s;
-    }
+#mainContent {
+  display: none;
+}
 
-    .show {
-      opacity: 1;
-      transform: translateY(0);
-    }
+section {
+  padding: 70px 20px;
+  text-align: center;
+}
 
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 55px;
-      }
+.container {
+  width: 100%;
+  max-width: 850px;
+  margin: auto;
+}
 
-      .subtitle {
-        font-size: 14px;
-        letter-spacing: 5px;
-      }
+.section-title {
+  font-size: 14px;
+  letter-spacing: 5px;
+  color: #9a8353;
+  margin-bottom: 12px;
+}
 
-      .date {
-        font-size: 18px;
-      }
+h2 {
+  font-size: 34px;
+  font-weight: normal;
+  margin: 10px 0 25px;
+}
 
-      .location {
-        font-size: 17px;
-      }
-    }
-  </style>
+p {
+  line-height: 1.8;
+}
+
+.divider {
+  width: 80px;
+  height: 1px;
+  background: #c5a86b;
+  margin: 30px auto;
+}
+
+/* ================= AYAT ================= */
+
+.quote {
+  font-style: italic;
+  max-width: 700px;
+  margin: auto;
+  font-size: 18px;
+  line-height: 2;
+}
+
+/* ================= MEMPELAI ================= */
+
+.couple {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  max-width: 850px;
+  margin: 40px auto;
+}
+
+.person {
+  text-align: center;
+}
+
+.person img {
+  width: 100%;
+  max-width: 330px;
+  border-radius: 15px;
+  display: block;
+  margin: auto;
+}
+
+.person h3 {
+  font-size: 28px;
+  font-weight: normal;
+  margin: 20px 0 10px;
+}
+
+.person p {
+  font-size: 16px;
+}
+
+/* ================= BIODATA ================= */
+
+.biodata {
+  background: #eee5d5;
+}
+
+.bio-card {
+  max-width: 650px;
+  margin: 20px auto;
+  padding: 28px;
+  background: rgba(255,255,255,.65);
+  border-radius: 15px;
+  text-align: left;
+}
+
+.bio-card h3 {
+  text-align: center;
+  font-size: 25px;
+  font-weight: normal;
+  margin-top: 0;
+}
+
+.bio-row {
+  display: flex;
+  border-bottom: 1px solid rgba(0,0,0,.08);
+  padding: 10px 0;
+  gap: 10px;
+}
+
+.bio-label {
+  width: 40%;
+  font-weight: bold;
+}
+
+.bio-value {
+  width: 60%;
+}
+
+/* ================= ACARA ================= */
+
+.events {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+  max-width: 800px;
+  margin: 35px auto;
+}
+
+.event-card {
+  padding: 30px 20px;
+  border: 1px solid #d4bd8c;
+  border-radius: 15px;
+  background: white;
+}
+
+.event-card h3 {
+  font-size: 27px;
+  font-weight: normal;
+  margin-top: 0;
+}
+
+.event-card strong {
+  display: block;
+  margin: 12px 0;
+}
+
+.maps-button {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 12px 25px;
+  border-radius: 30px;
+  background: #b69b60;
+  color: white;
+  text-decoration: none;
+}
+
+/* ================= COUNTDOWN ================= */
+
+.countdown {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  max-width: 600px;
+  margin: 30px auto;
+}
+
+.count-box {
+  background: white;
+  padding: 18px 8px;
+  border-radius: 12px;
+}
+
+.count-box span {
+  display: block;
+  font-size: 30px;
+}
+
+.count-box small {
+  color: #777;
+}
+
+/* ================= GALERI ================= */
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  max-width: 850px;
+  margin: 30px auto;
+}
+
+.gallery img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.gallery img:hover {
+  transform: scale(1.02);
+}
+
+.gallery img:last-child {
+  grid-column: span 2;
+}
+
+/* ================= PENUTUP ================= */
+
+.closing {
+  background: #ebe0cb;
+  padding-bottom: 100px;
+}
+
+.closing h2 {
+  font-size: 36px;
+}
+
+.footer {
+  padding: 30px 20px;
+  text-align: center;
+  background: #302b22;
+  color: white;
+  font-size: 14px;
+}
+
+/* ================= LIGHTBOX ================= */
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.9);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 20px;
+}
+
+.lightbox img {
+  max-width: 95%;
+  max-height: 90%;
+  object-fit: contain;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  color: white;
+  font-size: 40px;
+  cursor: pointer;
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 650px) {
+
+  .small-title {
+    font-size: 13px;
+    letter-spacing: 5px;
+  }
+
+  .cover h1 {
+    font-size: 60px;
+  }
+
+  .cover-date {
+    font-size: 18px;
+  }
+
+  .cover-location {
+    font-size: 17px;
+  }
+
+  .couple {
+    grid-template-columns: 1fr;
+  }
+
+  .events {
+    grid-template-columns: 1fr;
+  }
+
+  .bio-row {
+    display: block;
+  }
+
+  .bio-label,
+  .bio-value {
+    width: 100%;
+    display: block;
+  }
+
+  .bio-value {
+    margin-top: 4px;
+  }
+
+  .gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery img {
+    height: auto;
+  }
+
+  .gallery img:last-child {
+    grid-column: span 1;
+  }
+
+  .countdown {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+}
+</style>
 </head>
 
-<body>
 
-  <!-- MUSIK -->
-  <audio id="backsound" loop>
-    <source src="backsound.mp3" type="audio/mpeg">
-  </audio>
+<body class="locked">
 
-  <!-- COVER -->
-  <div class="cover" id="cover">
+<!-- ================= MUSIK ================= -->
 
-    <img src="sampul.jpg" alt="Majid dan Bela">
+<audio id="backsound" loop preload="auto">
+  <source src="backsound.mp3" type="audio/mpeg">
+</audio>
 
-    <div class="cover-content">
 
-      <div class="subtitle">THE WEDDING OF</div>
+<!-- ================= COVER ================= -->
 
-      <h1>Majid &amp; Bela</h1>
+<div class="cover" id="cover">
 
-      <div class="date">
-        Minggu, 23 Agustus 2026
-      </div>
+  <img
+    src="sampul.jpg"
+    class="cover-image"
+    alt="Majid dan Bela"
+  >
 
-      <div class="location">
-        Kp Pasaran Peleton<br>
-        Bogor, Jawa Barat
-      </div>
+  <div class="cover-overlay"></div>
 
-      <button id="openInvitation">
-        Buka Undangan
-      </button>
+  <div class="cover-content">
 
+    <div class="small-title">
+      THE WEDDING OF
     </div>
+
+    <h1>
+      Majid &amp; Bela
+    </h1>
+
+    <div class="cover-date">
+      Minggu, 23 Agustus 2026
+    </div>
+
+    <div class="cover-location">
+      Kp Pasaran Peleton<br>
+      Bogor, Jawa Barat
+    </div>
+
+    <button class="open-button" id="openInvitation">
+      Buka Undangan
+    </button>
+
   </div>
+</div>
 
 
-  <!-- ISI UNDANGAN -->
-  <section class="hidden-content" id="undangan">
+<!-- ================= ISI UTAMA ================= -->
 
-    <p>
+<main id="mainContent">
+
+
+<!-- ================= AYAT ================= -->
+
+<section>
+
+  <div class="container">
+
+    <div class="section-title">
+      ASSALAMUALAIKUM
+    </div>
+
+    <div class="divider"></div>
+
+    <p class="quote">
       "Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan
-      untukmu pasangan hidup dari jenis kamu sendiri, supaya kamu
-      merasa tenteram di hatinya..."
+      untukmu pasangan hidup dari jenismu sendiri, supaya kamu merasa
+      tenteram kepadanya dan dijadikan-Nya di antaramu rasa kasih
+      dan sayang."
     </p>
 
-    <p>QS. Ar-Rum: 21</p>
+    <p>
+      QS. Ar-Rum: 21
+    </p>
 
-    <h2>THE BRIDE &amp; GROOM</h2>
+  </div>
 
-    <h2>Dengan penuh cinta</h2>
+</section>
+
+
+<!-- ================= MEMPELAI ================= -->
+
+<section>
+
+  <div class="container">
+
+    <div class="section-title">
+      THE BRIDE &amp; GROOM
+    </div>
+
+    <h2>
+      Dengan penuh cinta
+    </h2>
 
     <p>
       Dengan memohon rahmat dan ridho Allah SWT,
       kami bermaksud menyelenggarakan pernikahan kami.
     </p>
 
-    <img
-      class="couple-photo"
-      src="mempelai-pria.jpg"
-      alt="Mempelai Pria"
-    >
+    <div class="divider"></div>
 
-    <h2>Majid Darussalam</h2>
-    <p>Putra dari Bapak Ahri &amp; Ibu Murtapiah</p>
-
-    <img
-      class="couple-photo"
-      src="mempelai-wanita.jpg"
-      alt="Mempelai Wanita"
-    >
-
-    <h2>Bela Hindiyani</h2>
-    <p>Putri dari Bapak Juben &amp; Ibu Siti Fatimah</p>
-
-  </section>
+  </div>
 
 
-  <!-- GALERI -->
-  <section class="hidden-content">
+  <div class="couple">
 
-    <h2>Galeri</h2>
+    <div class="person">
 
-    <div class="gallery">
-      <img src="galeri-1.jpg" alt="">
-      <img src="galeri-2.jpg" alt="">
-      <img src="galeri-3.jpg" alt="">
-      <img src="galeri-4.jpg" alt="">
-      <img src="galeri-5.jpg" alt="">
+      <img
+        src="mempelai-pria.jpg"
+        alt="Majid Darussalam"
+      >
+
+      <h3>
+        Majid Darussalam
+      </h3>
+
+      <p>
+        Putra dari<br>
+        Bapak Ahri &amp; Ibu Murtapiah
+      </p>
+
     </div>
 
-  </section>
+
+    <div class="person">
+
+      <img
+        src="mempelai-wanita.jpg"
+        alt="Bela Hindiyani"
+      >
+
+      <h3>
+        Bela Hindiyani
+      </h3>
+
+      <p>
+        Putri dari<br>
+        Bapak Juben &amp; Ibu Siti Fatimah
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
 
 
-  <!-- JAVASCRIPT LANGSUNG DI SINI -->
-  <script>
+<!-- ================= BIODATA ================= -->
 
-    const tombol = document.getElementById("openInvitation");
-    const musik = document.getElementById("backsound");
-    const isiUndangan = document.getElementById("undangan");
+<section class="biodata">
 
-    tombol.addEventListener("click", function () {
+  <div class="container">
 
-      // Putar backsound
-      musik.play().catch(function(error) {
-        console.log("Musik tidak dapat diputar:", error);
-      });
+    <div class="section-title">
+      BIODATA
+    </div>
 
-      // Tampilkan isi
-      isiUndangan.classList.add("show");
+    <h2>
+      Mempelai
+    </h2>
 
-      // Scroll otomatis ke bawah
-      window.scrollTo({
-        top: window.innerHeight,
-        behavior: "smooth"
-      });
 
-      // Auto scroll pelan setelah tombol ditekan
-      setTimeout(function() {
+    <div class="bio-card">
 
-        let autoScroll = setInterval(function() {
+      <h3>
+        Majid Darussalam
+      </h3>
 
-          window.scrollBy({
-            top: 1,
-            left: 0,
-            behavior: "auto"
-          });
+      <div class="bio-row">
+        <div class="bio-label">Nama Lengkap</div>
+        <div class="bio-value">Majid Darussalam</div>
+      </div>
 
-          if (
-            window.innerHeight + window.scrollY
-            >= document.body.scrollHeight - 5
-          ) {
-            clearInterval(autoScroll);
-          }
+      <div class="bio-row">
+        <div class="bio-label">Nama Panggilan</div>
+        <div class="bio-value">Majid</div>
+      </div>
 
-        }, 50);
+      <div class="bio-row">
+        <div class="bio-label">Tanggal Lahir</div>
+        <div class="bio-value">07 Agustus 1999</div>
+      </div>
 
-      }, 1000);
+      <div class="bio-row">
+        <div class="bio-label">Anak ke-</div>
+        <div class="bio-value">5 / Bungsu</div>
+      </div>
 
+      <div class="bio-row">
+        <div class="bio-label">Nama Bapak</div>
+        <div class="bio-value">Ahri</div>
+      </div>
+
+      <div class="bio-row">
+        <div class="bio-label">Nama Ibu</div>
+        <div class="bio-value">Murtapiah</div>
+      </div>
+
+      <div class="bio-row">
+        <div class="bio-label">Instagram</div>
+        <div class="bio-value">sibungsuanarkiii_07</div>
+      </div>
+
+    </div>
+
+
+    <div class="bio-card">
+
+      <h3>
+        Bela Hindiyani
+      </h3>
+
+      <div class="bio-row">
+        <div class="bio-label">Nama Lengkap</div>
+        <div class="bio-value">Bela Hindiyani</div>
+      </div>
+
+      <div class="bio-row">
+        <div class="bio-label">Nama Panggilan</div>
+        <div class="bio-value">Bela</div>
+      </div>
+
+      <div class="bio-row">
+        <div class="bio-label">Tanggal Lahir</div>
+        <div class="bio-value">06 September 2003</div>
+      </div>
+
+      <div class="bio-row">
+        <div class="bio-label">Anak ke-</div>
+        <div class="bio-value">Kedua dari 4 bersaudara</div>
+      </div>
+
+      <div class="bio-row">
+        <div class="bio-label">Nama Bapak</div>
+        <div class="bio-value">Juben</div>
+      </div>
+
+      <div class="bio-row">
+        <div class="bio-label">Nama Ibu</div>
+        <div class="bio-value">Siti Fatimah (Empat)</div>
+      </div>
+
+      <div class="bio-row">
+        <div class="bio-label">Instagram</div>
+        <div class="bio-value">Sabela69_</div>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= COUNTDOWN ================= -->
+
+<section>
+
+  <div class="container">
+
+    <div class="section-title">
+      MENUJU HARI BAHAGIA
+    </div>
+
+    <h2>
+      23 Agustus 2026
+    </h2>
+
+    <div class="countdown">
+
+      <div class="count-box">
+        <span id="days">0</span>
+        <small>Hari</small>
+      </div>
+
+      <div class="count-box">
+        <span id="hours">0</span>
+        <small>Jam</small>
+      </div>
+
+      <div class="count-box">
+        <span id="minutes">0</span>
+        <small>Menit</small>
+      </div>
+
+      <div class="count-box">
+        <span id="seconds">0</span>
+        <small>Detik</small>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= ACARA ================= -->
+
+<section>
+
+  <div class="container">
+
+    <div class="section-title">
+      WAKTU &amp; TEMPAT
+    </div>
+
+    <h2>
+      Rangkaian Acara
+    </h2>
+
+    <div class="events">
+
+
+      <div class="event-card">
+
+        <h3>
+          Akad Nikah
+        </h3>
+
+        <strong>
+          Minggu, 23 Agustus 2026
+        </strong>
+
+        <p>
+          Pukul 08.00 WIB
+        </p>
+
+        <p>
+          Kp Pasaran Peleton<br>
+          Bogor, Jawa Barat
+        </p>
+
+      </div>
+
+
+      <div class="event-card">
+
+        <h3>
+          Resepsi
+        </h3>
+
+        <strong>
+          Minggu, 23 Agustus 2026
+        </strong>
+
+        <p>
+          Pukul 09.00 WIB - selesai
+        </p>
+
+        <p>
+          Kp Pasaran Peleton<br>
+          Bogor, Jawa Barat
+        </p>
+
+        <a
+          class="maps-button"
+          href="https://www.google.com/maps/search/?api=1&query=Kp+Pasaran+Peleton+Bogor+Jawa+Barat"
+          target="_blank"
+        >
+          Buka Google Maps
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= GALERI ================= -->
+
+<section>
+
+  <div class="container">
+
+    <div class="section-title">
+      OUR MOMENTS
+    </div>
+
+    <h2>
+      Galeri
+    </h2>
+
+    <div class="gallery">
+
+      <img src="galeri-1.jpg" alt="Galeri 1">
+      <img src="galeri-2.jpg" alt="Galeri 2">
+      <img src="galeri-3.jpg" alt="Galeri 3">
+      <img src="galeri-4.jpg" alt="Galeri 4">
+      <img src="galeri-5.jpg" alt="Galeri 5">
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= PENUTUP ================= -->
+
+<section class="closing">
+
+  <div class="container">
+
+    <div class="section-title">
+      TERIMA KASIH
+    </div>
+
+    <h2>
+      Majid &amp; Bela
+    </h2>
+
+    <p>
+      Merupakan suatu kebahagiaan dan kehormatan bagi kami
+      apabila Bapak/Ibu/Saudara/i berkenan hadir dan
+      memberikan doa restu.
+    </p>
+
+    <div class="divider"></div>
+
+    <p>
+      Wassalamu'alaikum Warahmatullahi Wabarakatuh
+    </p>
+
+  </div>
+
+</section>
+
+
+<footer class="footer">
+  Majid &amp; Bela • 2026
+</footer>
+
+</main>
+
+
+<!-- ================= LIGHTBOX ================= -->
+
+<div class="lightbox" id="lightbox">
+
+  <div class="lightbox-close" id="lightboxClose">
+    ×
+  </div>
+
+  <img id="lightboxImage" src="" alt="Foto">
+
+</div>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+/* =========================================
+   TOMBOL BUKA UNDANGAN
+========================================= */
+
+const openButton = document.getElementById("openInvitation");
+const music = document.getElementById("backsound");
+const mainContent = document.getElementById("mainContent");
+
+openButton.addEventListener("click", function () {
+
+  /* Buka isi */
+  document.body.classList.remove("locked");
+
+  mainContent.style.display = "block";
+
+  /* Putar musik */
+  music.volume = 0.7;
+
+  music.play().catch(function(error) {
+    console.log("Musik diblokir browser:", error);
+  });
+
+  /* Scroll ke isi */
+  setTimeout(function () {
+
+    document.getElementById("mainContent").scrollIntoView({
+      behavior: "smooth"
     });
 
-  </script>
+  }, 300);
+
+  /* Mulai auto scroll */
+  setTimeout(function () {
+
+    startAutoScroll();
+
+  }, 1500);
+
+});
+
+
+/* =========================================
+   AUTO SCROLL
+========================================= */
+
+let autoScrollTimer = null;
+
+function startAutoScroll() {
+
+  if (autoScrollTimer !== null) {
+    return;
+  }
+
+  autoScrollTimer = setInterval(function () {
+
+    window.scrollBy(0, 1);
+
+    if (
+      window.innerHeight + window.scrollY
+      >= document.documentElement.scrollHeight - 5
+    ) {
+
+      clearInterval(autoScrollTimer);
+
+      autoScrollTimer = null;
+
+    }
+
+  }, 45);
+
+}
+
+
+/* =========================================
+   JIKA USER MENYENTUH / MENGGESER
+   AUTO SCROLL BERHENTI
+========================================= */
+
+let userScrolling = false;
+
+window.addEventListener("touchstart", function () {
+
+  if (autoScrollTimer !== null) {
+
+    clearInterval(autoScrollTimer);
+    autoScrollTimer = null;
+
+  }
+
+}, {passive:true});
+
+
+/* =========================================
+   COUNTDOWN
+========================================= */
+
+const weddingDate =
+  new Date("August 23, 2026 08:00:00").getTime();
+
+function updateCountdown() {
+
+  const now = new Date().getTime();
+
+  const distance = weddingDate - now;
+
+  if (distance <= 0) {
+
+    document.getElementById("days").innerText = "0";
+    document.getElementById("hours").innerText = "0";
+    document.getElementById("minutes").innerText = "0";
+    document.getElementById("seconds").innerText = "0";
+
+    return;
+
+  }
+
+  const days =
+    Math.floor(distance / (1000 * 60 * 60 * 24));
+
+  const hours =
+    Math.floor(
+      (distance % (1000 * 60 * 60 * 24))
+      / (1000 * 60 * 60)
+    );
+
+  const minutes =
+    Math.floor(
+      (distance % (1000 * 60 * 60))
+      / (1000 * 60)
+    );
+
+  const seconds =
+    Math.floor(
+      (distance % (1000 * 60))
+      / 1000
+    );
+
+  document.getElementById("days").innerText = days;
+  document.getElementById("hours").innerText = hours;
+  document.getElementById("minutes").innerText = minutes;
+  document.getElementById("seconds").innerText = seconds;
+
+}
+
+updateCountdown();
+
+setInterval(updateCountdown, 1000);
+
+
+/* =========================================
+   GALERI / LIGHTBOX
+========================================= */
+
+const galleryImages =
+  document.querySelectorAll(".gallery img");
+
+const lightbox =
+  document.getElementById("lightbox");
+
+const lightboxImage =
+  document.getElementById("lightboxImage");
+
+const lightboxClose =
+  document.getElementById("lightboxClose");
+
+
+galleryImages.forEach(function(image) {
+
+  image.addEventListener("click", function() {
+
+    lightbox.style.display = "flex";
+
+    lightboxImage.src = image.src;
+
+  });
+
+});
+
+
+lightboxClose.addEventListener("click", function() {
+
+  lightbox.style.display = "none";
+
+});
+
+
+lightbox.addEventListener("click", function(event) {
+
+  if (event.target === lightbox) {
+
+    lightbox.style.display = "none";
+
+  }
+
+});
+
+</script>
 
 </body>
 </html>
