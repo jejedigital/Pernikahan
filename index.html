@@ -228,6 +228,31 @@ p {
   width: 60%;
 }
 
+/* ================= COUNTDOWN ================= */
+
+.countdown {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  max-width: 600px;
+  margin: 30px auto;
+}
+
+.count-box {
+  background: white;
+  padding: 18px 8px;
+  border-radius: 12px;
+}
+
+.count-box span {
+  display: block;
+  font-size: 30px;
+}
+
+.count-box small {
+  color: #777;
+}
+
 /* ================= ACARA ================= */
 
 .events {
@@ -266,29 +291,50 @@ p {
   text-decoration: none;
 }
 
-/* ================= COUNTDOWN ================= */
+/* ================= DANA ================= */
 
-.countdown {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
-  max-width: 600px;
-  margin: 30px auto;
+.dana-section {
+  background: #f7f2e8;
 }
 
-.count-box {
+.dana-card {
+  max-width: 500px;
+  margin: 30px auto 0;
+  padding: 30px 20px;
   background: white;
-  padding: 18px 8px;
-  border-radius: 12px;
+  border-radius: 15px;
+  border: 1px solid #d4bd8c;
+  box-shadow: 0 5px 18px rgba(0,0,0,.06);
 }
 
-.count-box span {
-  display: block;
-  font-size: 30px;
+.dana-title {
+  font-size: 28px;
+  margin-bottom: 15px;
 }
 
-.count-box small {
-  color: #777;
+.dana-number {
+  font-size: 25px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin: 15px 0 8px;
+}
+
+.dana-name {
+  font-size: 17px;
+  color: #666;
+}
+
+.copy-dana-button {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 30px;
+  background: #b69b60;
+  color: white;
+  font-family: inherit;
+  font-size: 16px;
+  cursor: pointer;
 }
 
 /* ================= GALERI ================= */
@@ -316,6 +362,72 @@ p {
 
 .gallery img:last-child {
   grid-column: span 2;
+}
+
+/* ================= UCAPAN ================= */
+
+.wishes-section {
+  background: #eee5d5;
+}
+
+.wishes-form {
+  max-width: 650px;
+  margin: 30px auto 0;
+  padding: 30px 22px;
+  background: rgba(255,255,255,.75);
+  border-radius: 15px;
+  text-align: left;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #d4bd8c;
+  border-radius: 10px;
+  background: white;
+  font-family: inherit;
+  font-size: 16px;
+  outline: none;
+}
+
+.form-group textarea {
+  min-height: 130px;
+  resize: vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  border-color: #b69b60;
+}
+
+.whatsapp-button {
+  width: 100%;
+  padding: 15px 20px;
+  border: none;
+  border-radius: 30px;
+  background: #b69b60;
+  color: white;
+  font-family: inherit;
+  font-size: 17px;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0,0,0,.12);
+}
+
+.whatsapp-button:active {
+  transform: scale(.98);
 }
 
 /* ================= PENUTUP ================= */
@@ -465,7 +577,7 @@ p {
     </div>
 
     <div class="cover-location">
-      Kp Pasaran Peleton<br>
+      Kp Pasaran Pelton<br>
       Bogor, Jawa Barat
     </div>
 
@@ -760,7 +872,7 @@ p {
         </p>
 
         <p>
-          Kp Pasaran Peleton<br>
+          Kp Pasaran Pelton<br>
           Bogor, Jawa Barat
         </p>
 
@@ -782,19 +894,66 @@ p {
         </p>
 
         <p>
-          Kp Pasaran Peleton<br>
+          Kp Pasaran Pelton<br>
           Bogor, Jawa Barat
         </p>
 
         <a
           class="maps-button"
-          href="https://www.google.com/maps/search/?api=1&query=Kp+Pasaran+Peleton+Bogor+Jawa+Barat"
+          href="https://maps.app.goo.gl/xbWAi6ynTxTE5NTC9?g_st=iw"
           target="_blank"
         >
           Buka Google Maps
         </a>
 
       </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= DANA ================= -->
+
+<section class="dana-section">
+
+  <div class="container">
+
+    <div class="section-title">
+      HADIAH DIGITAL
+    </div>
+
+    <h2>
+      Kirim Hadiah
+    </h2>
+
+    <p>
+      Bagi Bapak/Ibu/Saudara/i yang ingin memberikan tanda kasih,
+      dapat melalui DANA berikut:
+    </p>
+
+    <div class="dana-card">
+
+      <div class="dana-title">
+        DANA
+      </div>
+
+      <div class="dana-number">
+        085786231060
+      </div>
+
+      <div class="dana-name">
+        A/n Bella Hindiyani
+      </div>
+
+      <button
+        class="copy-dana-button"
+        id="copyDana"
+      >
+        Salin Nomor DANA
+      </button>
 
     </div>
 
@@ -826,6 +985,102 @@ p {
       <img src="galeri-5.jpg" alt="Galeri 5">
 
     </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= UCAPAN TAMU ================= -->
+
+<section class="wishes-section">
+
+  <div class="container">
+
+    <div class="section-title">
+      UCAPAN &amp; KONFIRMASI
+    </div>
+
+    <h2>
+      Kirim Ucapan
+    </h2>
+
+    <p>
+      Berikan ucapan dan konfirmasi kehadiran
+      untuk Majid &amp; Bela.
+    </p>
+
+
+    <form class="wishes-form" id="wishesForm">
+
+      <div class="form-group">
+
+        <label for="guestName">
+          Nama
+        </label>
+
+        <input
+          type="text"
+          id="guestName"
+          placeholder="Masukkan nama Anda"
+          required
+        >
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label for="guestMessage">
+          Ucapan
+        </label>
+
+        <textarea
+          id="guestMessage"
+          placeholder="Tuliskan ucapan untuk kedua mempelai"
+          required
+        ></textarea>
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label for="attendance">
+          Konfirmasi Kehadiran
+        </label>
+
+        <select id="attendance" required>
+
+          <option value="">
+            Pilih konfirmasi
+          </option>
+
+          <option value="Hadir">
+            Hadir
+          </option>
+
+          <option value="Tidak Hadir">
+            Tidak Hadir
+          </option>
+
+          <option value="Masih Ragu">
+            Masih Ragu
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <button
+        type="submit"
+        class="whatsapp-button"
+      >
+        Kirim ke WhatsApp
+      </button>
+
+    </form>
 
   </div>
 
@@ -965,8 +1220,6 @@ function startAutoScroll() {
    AUTO SCROLL BERHENTI
 ========================================= */
 
-let userScrolling = false;
-
 window.addEventListener("touchstart", function () {
 
   if (autoScrollTimer !== null) {
@@ -1080,6 +1333,99 @@ lightbox.addEventListener("click", function(event) {
     lightbox.style.display = "none";
 
   }
+
+});
+
+
+/* =========================================
+   SALIN NOMOR DANA
+========================================= */
+
+const copyDana =
+  document.getElementById("copyDana");
+
+copyDana.addEventListener("click", function() {
+
+  const danaNumber = "085786231060";
+
+  navigator.clipboard.writeText(danaNumber)
+    .then(function() {
+
+      copyDana.innerText = "Nomor Berhasil Disalin";
+
+      setTimeout(function() {
+
+        copyDana.innerText = "Salin Nomor DANA";
+
+      }, 2000);
+
+    })
+    .catch(function() {
+
+      alert("Nomor DANA: " + danaNumber);
+
+    });
+
+});
+
+
+/* =========================================
+   UCAPAN + KONFIRMASI KE WHATSAPP
+========================================= */
+
+const wishesForm =
+  document.getElementById("wishesForm");
+
+wishesForm.addEventListener("submit", function(event) {
+
+  event.preventDefault();
+
+  const name =
+    document.getElementById("guestName").value.trim();
+
+  const message =
+    document.getElementById("guestMessage").value.trim();
+
+  const attendance =
+    document.getElementById("attendance").value;
+
+
+  if (!name || !message || !attendance) {
+
+    alert("Mohon lengkapi semua kolom terlebih dahulu.");
+
+    return;
+
+  }
+
+
+  const whatsappNumber = "6285786231060";
+
+
+  const whatsappMessage =
+`Assalamu'alaikum.
+
+Nama: ${name}
+
+Ucapan:
+${message}
+
+Konfirmasi Kehadiran:
+${attendance}
+
+Terima kasih.`;
+
+  const whatsappURL =
+    "https://wa.me/" +
+    whatsappNumber +
+    "?text=" +
+    encodeURIComponent(whatsappMessage);
+
+
+  window.open(
+    whatsappURL,
+    "_blank"
+  );
 
 });
 
