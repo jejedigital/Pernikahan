@@ -1,179 +1,720 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Majid & Bela — Wedding Invitation</title>
+    <title>Majid & Bela | Undangan Pernikahan</title>
 
-  <!-- WAJIB: memanggil style.css -->
-  <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Georgia, "Times New Roman", serif;
+            background: #f5f0e7;
+            color: #3f493c;
+            line-height: 1.7;
+        }
+
+        section {
+            padding: 70px 20px;
+        }
+
+        .cover {
+            min-height: 100vh;
+            background:
+                linear-gradient(rgba(20,25,15,.48), rgba(20,25,15,.58)),
+                url("sampul.jpg") center/cover no-repeat;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .cover-content {
+            width: 100%;
+            max-width: 600px;
+            padding: 30px 20px;
+        }
+
+        .small-title {
+            font-size: 14px;
+            letter-spacing: 5px;
+            margin-bottom: 15px;
+        }
+
+        .cover h1 {
+            font-size: clamp(55px, 15vw, 100px);
+            font-weight: normal;
+            line-height: 1;
+            margin-bottom: 25px;
+        }
+
+        .cover-date {
+            font-size: 17px;
+            margin-bottom: 8px;
+        }
+
+        .cover-location {
+            font-size: 16px;
+            margin-bottom: 30px;
+        }
+
+        .button {
+            display: inline-block;
+            border: none;
+            background: #d9c18d;
+            color: #394032;
+            padding: 14px 35px;
+            border-radius: 40px;
+            font-size: 16px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: .3s;
+        }
+
+        .button:hover {
+            transform: scale(1.05);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .section-title small {
+            display: block;
+            letter-spacing: 4px;
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+
+        .section-title h2 {
+            font-size: 38px;
+            font-weight: normal;
+        }
+
+        .quote {
+            text-align: center;
+            max-width: 650px;
+            margin: 0 auto;
+            font-style: italic;
+            font-size: 17px;
+        }
+
+        .intro {
+            background: #f5f0e7;
+        }
+
+        .couple {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 35px;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .person {
+            text-align: center;
+        }
+
+        .person img {
+            width: 100%;
+            max-width: 330px;
+            aspect-ratio: 3/4;
+            object-fit: cover;
+            border-radius: 180px 180px 20px 20px;
+            margin-bottom: 20px;
+        }
+
+        .person h3 {
+            font-size: 30px;
+            font-weight: normal;
+        }
+
+        .person p {
+            font-size: 15px;
+            margin-top: 5px;
+        }
+
+        .bio {
+            margin: 20px auto 0;
+            max-width: 330px;
+            text-align: left;
+            background: rgba(255,255,255,.5);
+            padding: 18px;
+            border-radius: 15px;
+        }
+
+        .bio div {
+            margin-bottom: 5px;
+        }
+
+        .countdown-section {
+            background: #59634d;
+            color: white;
+            text-align: center;
+        }
+
+        .countdown {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            max-width: 600px;
+            margin: 30px auto;
+            gap: 10px;
+        }
+
+        .count-box {
+            background: rgba(255,255,255,.12);
+            padding: 18px 5px;
+            border-radius: 12px;
+        }
+
+        .count-box strong {
+            display: block;
+            font-size: 32px;
+        }
+
+        .count-box span {
+            font-size: 12px;
+            letter-spacing: 1px;
+        }
+
+        .event {
+            max-width: 650px;
+            margin: auto;
+            text-align: center;
+            background: #fffdf8;
+            padding: 35px 20px;
+            border-radius: 20px;
+            box-shadow: 0 5px 25px rgba(0,0,0,.08);
+        }
+
+        .event h3 {
+            font-size: 30px;
+            font-weight: normal;
+            margin-bottom: 15px;
+        }
+
+        .event p {
+            margin-bottom: 7px;
+        }
+
+        .map-button {
+            margin-top: 20px;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 12px;
+            cursor: pointer;
+        }
+
+        .gallery img:first-child {
+            grid-column: span 2;
+            height: 430px;
+        }
+
+        .closing {
+            text-align: center;
+            background: #59634d;
+            color: white;
+        }
+
+        .closing h2 {
+            font-size: 42px;
+            font-weight: normal;
+            margin: 15px 0;
+        }
+
+        footer {
+            background: #31382d;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            font-size: 13px;
+        }
+
+        .music-button {
+            position: fixed;
+            right: 18px;
+            bottom: 18px;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: none;
+            background: #d9c18d;
+            color: #394032;
+            font-size: 20px;
+            z-index: 1000;
+            display: none;
+        }
+
+        @media (max-width: 650px) {
+
+            section {
+                padding: 55px 16px;
+            }
+
+            .cover h1 {
+                font-size: 58px;
+            }
+
+            .cover-date {
+                font-size: 15px;
+            }
+
+            .couple {
+                grid-template-columns: 1fr;
+                gap: 45px;
+            }
+
+            .person img {
+                max-width: 300px;
+            }
+
+            .countdown {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 5px;
+            }
+
+            .count-box {
+                padding: 12px 3px;
+            }
+
+            .count-box strong {
+                font-size: 24px;
+            }
+
+            .count-box span {
+                font-size: 9px;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery img,
+            .gallery img:first-child {
+                grid-column: span 1;
+                height: 330px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-  <main class="invitation">
+    <!-- BACKSOUND -->
+    <audio id="backsound" loop preload="auto">
+        <source src="backsound.mp3" type="audio/mpeg">
+    </audio>
 
     <!-- SAMPUL -->
-    <section class="cover">
-      <div class="cover-overlay">
-        <p class="small-title">THE WEDDING OF</p>
-        <h1>Majid &amp; Bela</h1>
+    <section class="cover" id="cover">
 
-        <p class="date">Minggu, 23 Agustus 2026</p>
+        <div class="cover-content">
 
-        <p class="location">
-          Kp Pasaran Peleton<br>
-          Bogor, Jawa Barat
-        </p>
+            <div class="small-title">
+                THE WEDDING OF
+            </div>
 
-        <a href="#undangan" class="button">
-          Buka Undangan
-        </a>
-      </div>
+            <h1>Majid &amp; Bela</h1>
+
+            <div class="cover-date">
+                Minggu, 23 Agustus 2026
+            </div>
+
+            <div class="cover-location">
+                Kp Pasaran Peleton<br>
+                Bogor, Jawa Barat
+            </div>
+
+            <button class="button" id="openInvitation">
+                Buka Undangan
+            </button>
+
+        </div>
     </section>
 
 
-    <!-- ISI UNDANGAN -->
-    <section id="undangan" class="content">
+    <!-- PEMBUKA -->
+    <section class="intro">
 
-      <p class="small-title">THE WEDDING OF</p>
-      <h2>Majid &amp; Bela</h2>
+        <div class="section-title">
+            <small>ASSALAMUALAIKUM WARAHMATULLAHI WABARAKATUH</small>
+            <h2>Dengan penuh cinta</h2>
+        </div>
 
-      <p class="intro">
-        Dengan memohon rahmat dan ridho Allah SWT,
-        kami bermaksud menyelenggarakan pernikahan kami.
-      </p>
-
-
-      <!-- AYAT -->
-      <div class="quote">
-        <p>
-          "Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan
-          untukmu pasangan hidup dari jenis kamu sendiri, supaya kamu
-          merasa tenteram hati dan dijadikan-Nya kasih sayang di antara kamu."
+        <p class="quote">
+            "Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan
+            untukmu pasangan hidup dari jenis kamu sendiri, supaya kamu
+            merasa tenteram di sampingnya dan dijadikan-Nya kasih sayang
+            di antara kamu."
+            <br><br>
+            QS. Ar-Rum: 21
         </p>
-        <span>QS. Ar-Rum: 21</span>
-      </div>
-
-
-      <!-- MEMPELAI PRIA -->
-      <div class="couple">
-        <div class="person">
-          <img src="mempelai-pria.jpg" alt="Majid Darussalam">
-
-          <p class="role">THE GROOM</p>
-          <h2>Majid Darussalam</h2>
-          <p>Majid</p>
-        </div>
-
-
-        <div class="ampersand">&amp;</div>
-
-
-        <!-- MEMPELAI WANITA -->
-        <div class="person">
-          <img src="mempelai-wanita.jpg" alt="Bela Hindiyani">
-
-          <p class="role">THE BRIDE</p>
-          <h2>Bela Hindiyani</h2>
-          <p>Bela</p>
-        </div>
-      </div>
-
-
-      <!-- ACARA -->
-      <section class="event">
-        <p class="small-title">SAVE THE DATE</p>
-
-        <h2>Akad &amp; Resepsi</h2>
-
-        <p class="event-date">
-          Minggu, 23 Agustus 2026
-        </p>
-
-        <div class="event-time">
-          <div>
-            <strong>08.00 WIB</strong>
-            <span>Akad Nikah</span>
-          </div>
-
-          <div>
-            <strong>09.00 WIB</strong>
-            <span>Resepsi — selesai</span>
-          </div>
-        </div>
-
-        <p class="address">
-          Kp Pasaran Peleton RT 01 RW 02<br>
-          Desa Pasaran, Kecamatan Pamijahan<br>
-          Kabupaten Bogor, Jawa Barat
-        </p>
-
-        <a
-          href="https://www.google.com/maps/search/?api=1&query=Kp%20Pasaran%20Peleton%20RT%2001%20RW%2002%20Desa%20Pasaran%20Kecamatan%20Pamijahan%20Kabupaten%20Bogor%20Jawa%20Barat"
-          target="_blank"
-          class="button">
-          Lihat Lokasi
-        </a>
-      </section>
-
-
-      <!-- GALERI -->
-      <section class="gallery">
-        <p class="small-title">OUR MOMENTS</p>
-        <h2>Galeri</h2>
-
-        <div class="gallery-grid">
-          <img src="galeri-1.jpg" alt="Majid dan Bela">
-          <img src="galeri-2.jpg" alt="Majid dan Bela">
-          <img src="galeri-3.jpg" alt="Majid dan Bela">
-          <img src="galeri-4.jpg" alt="Majid dan Bela">
-          <img src="galeri-5.jpg" alt="Majid dan Bela">
-        </div>
-      </section>
-
-
-      <!-- BIODATA -->
-      <section class="biodata">
-        <p class="small-title">BRIDE &amp; GROOM</p>
-        <h2>Dengan penuh cinta</h2>
-
-        <div class="bio-card">
-          <h3>Majid Darussalam</h3>
-          <p>Nama panggilan: Majid</p>
-          <p>07 Agustus 1999</p>
-          <p>Anak ke-5 / bungsu</p>
-          <p>Putra dari Bapak Ahri &amp; Ibu Murtapiah</p>
-        </div>
-
-        <div class="bio-card">
-          <h3>Bela Hindiyani</h3>
-          <p>Nama panggilan: Bela</p>
-          <p>06 September 2003</p>
-          <p>Anak kedua dari 4 bersaudara</p>
-          <p>Putri dari Bapak Juben &amp; Ibu Siti Fatimah (Empat)</p>
-        </div>
-      </section>
-
-
-      <!-- PENUTUP -->
-      <section class="closing">
-        <h2>Terima Kasih</h2>
-        <p>
-          Merupakan suatu kehormatan dan kebahagiaan bagi kami
-          apabila Bapak/Ibu/Saudara/i berkenan hadir
-          untuk memberikan doa restu.
-        </p>
-
-        <h3>Majid &amp; Bela</h3>
-      </section>
 
     </section>
 
-  </main>
 
-  <script src="script.js"></script>
+    <!-- MEMPELAI -->
+    <section>
 
-</body>
-</html>
+        <div class="section-title">
+            <small>THE BRIDE &amp; GROOM</small>
+            <h2>Majid &amp; Bela</h2>
+        </div>
+
+        <div class="couple">
+
+            <!-- PRIA -->
+            <div class="person">
+
+                <img src="mempelai-pria.jpg" alt="Majid">
+
+                <h3>Majid Darussalam</h3>
+
+                <p>Majid</p>
+
+                <div class="bio">
+                    <div><strong>Putra dari:</strong></div>
+                    <div>Bapak Ahri</div>
+                    <div>Ibu Murtapiah</div>
+                    <br>
+
+                    <div><strong>Lahir:</strong></div>
+                    <div>07 Agustus 1999</div>
+                    <br>
+
+                    <div><strong>Anak ke:</strong></div>
+                    <div>5 / Bungsu</div>
+                    <br>
+
+                    <div><strong>Instagram:</strong></div>
+                    <div>@sibungsuanarkiii_07</div>
+                </div>
+
+            </div>
+
+
+            <!-- WANITA -->
+            <div class="person">
+
+                <img src="mempelai-wanita.jpg" alt="Bela">
+
+                <h3>Bela Hindiyani</h3>
+
+                <p>Bela</p>
+
+                <div class="bio">
+                    <div><strong>Putri dari:</strong></div>
+                    <div>Bapak Juben</div>
+                    <div>Ibu Siti Fatimah (Empat)</div>
+                    <br>
+
+                    <div><strong>Lahir:</strong></div>
+                    <div>06 September 2003</div>
+                    <br>
+
+                    <div><strong>Anak ke:</strong></div>
+                    <div>Kedua dari 4 bersaudara</div>
+                    <br>
+
+                    <div><strong>Instagram:</strong></div>
+                    <div>@Sabela69_</div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- COUNTDOWN -->
+    <section class="countdown-section">
+
+        <div class="section-title">
+            <small>MENUJU HARI BAHAGIA</small>
+            <h2>23 Agustus 2026</h2>
+        </div>
+
+        <div class="countdown">
+
+            <div class="count-box">
+                <strong id="days">0</strong>
+                <span>HARI</span>
+            </div>
+
+            <div class="count-box">
+                <strong id="hours">0</strong>
+                <span>JAM</span>
+            </div>
+
+            <div class="count-box">
+                <strong id="minutes">0</strong>
+                <span>MENIT</span>
+            </div>
+
+            <div class="count-box">
+                <strong id="seconds">0</strong>
+                <span>DETIK</span>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ACARA -->
+    <section>
+
+        <div class="section-title">
+            <small>WEDDING DAY</small>
+            <h2>Hari Bahagia</h2>
+        </div>
+
+        <div class="event">
+
+            <h3>Akad &amp; Resepsi</h3>
+
+            <p><strong>Minggu, 23 Agustus 2026</strong></p>
+
+            <br>
+
+            <p>Akad — 08.00 WIB</p>
+            <p>Resepsi — 09.00 WIB sampai selesai</p>
+
+            <br>
+
+            <p>
+                Kp Pasaran Peleton<br>
+                Bogor, Jawa Barat
+            </p>
+
+            <a
+                class="button map-button"
+                href="https://www.google.com/maps/search/?api=1&query=Kp+Pasaran+Peleton+Bogor+Jawa+Barat"
+                target="_blank"
+            >
+                Buka Google Maps
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- GALERI -->
+    <section>
+
+        <div class="section-title">
+            <small>OUR MOMENTS</small>
+            <h2>Galeri</h2>
+        </div>
+
+        <div class="gallery">
+
+            <img src="galeri-1.jpg" alt="Majid dan Bela">
+
+            <img src="galeri-2.jpg" alt="Majid dan Bela">
+
+            <img src="galeri-3.jpg" alt="Majid dan Bela">
+
+            <img src="galeri-4.jpg" alt="Majid dan Bela">
+
+            <img src="galeri-5.jpg" alt="Majid dan Bela">
+
+        </div>
+
+    </section>
+
+
+    <!-- PENUTUP -->
+    <section class="closing">
+
+        <div class="section-title">
+            <small>TERIMA KASIH</small>
+
+            <h2>Majid &amp; Bela</h2>
+        </div>
+
+        <p>
+            Merupakan suatu kehormatan dan kebahagiaan bagi kami
+            apabila Bapak/Ibu/Saudara/i berkenan hadir
+            dan memberikan doa restu.
+        </p>
+
+        <br>
+
+        <p>
+            Wassalamu'alaikum Warahmatullahi Wabarakatuh
+        </p>
+
+    </section>
+
+
+    <footer>
+        Majid &amp; Bela • 23 Agustus 2026
+    </footer>
+
+
+    <!-- TOMBOL MUSIK -->
+    <button class="music-button" id="musicButton">
+        ♪
+    </button>
+
+
+    <script>
+
+        /* ================================
+           TOMBOL BUKA UNDANGAN
+        ================================= */
+
+        const openButton =
+            document.getElementById("openInvitation");
+
+        const music =
+            document.getElementById("backsound");
+
+        const musicButton =
+            document.getElementById("musicButton");
+
+
+        let autoScrolling = false;
+        let scrollInterval = null;
+
+
+        openButton.addEventListener("click", function () {
+
+            /* MULAI MUSIK */
+
+            music.volume = 0.5;
+
+            music.play().then(function () {
+
+                musicButton.style.display = "block";
+
+            }).catch(function (error) {
+
+                console.log("Musik gagal diputar:", error);
+
+            });
+
+
+            /* SCROLL KE BAGIAN UNDANGAN */
+
+            window.scrollTo({
+                top: window.innerHeight,
+                behavior: "smooth"
+            });
+
+
+            /* TUNGGU SEBENTAR LALU AUTO SCROLL */
+
+            setTimeout(function () {
+
+                if (autoScrolling) return;
+
+                autoScrolling = true;
+
+                scrollInterval = setInterval(function () {
+
+                    window.scrollBy({
+                        top: 1,
+                        left: 0
+                    });
+
+
+                    /* BERHENTI DI BAGIAN PALING BAWAH */
+
+                    if (
+                        window.innerHeight + window.scrollY
+                        >= document.body.scrollHeight - 5
+                    ) {
+
+                        clearInterval(scrollInterval);
+
+                        autoScrolling = false;
+
+                    }
+
+                }, 45);
+
+            }, 1500);
+
+        });
+
+
+        /* ================================
+           TOMBOL MUSIK
+        ================================= */
+
+        musicButton.addEventListener("click", function () {
+
+            if (music.paused) {
+
+                music.play();
+
+                musicButton.innerHTML = "♪";
+
+            } else {
+
+                music.pause();
+
+                musicButton.innerHTML = "🔇";
+
+            }
+
+        });
+
+
+        /* ================================
+           COUNTDOWN
+        ================================= */
+
+        const weddingDate =
+            new Date("August 23, 2026 08:00:00").getTime();
+
+
+        function updateCountdown() {
+
+            const now = new Date().getTime();
+
+            const distance = weddingDate - now;
+
+
+            if (distance <= 0) {
+
+                document.getElementById("days").innerHTML = "0";
+                document.getElementById("hours").innerHTML = "0";
+                document.getElementById("minutes").innerHTML = "0";
+                document.getElementById("seconds").innerHTML = "0";
+
+                return;
+
+            }
+
+
+           
