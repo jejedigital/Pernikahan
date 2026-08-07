@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Mulai auto-scroll setelah sampai di bagian undangan
         setTimeout(function () {
-            const scrollSpeed = 1;
+            const scrollSpeed = 2;
 
             const autoScroll = setInterval(function () {
                 window.scrollBy(0, scrollSpeed);
