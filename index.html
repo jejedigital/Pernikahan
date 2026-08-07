@@ -1,388 +1,294 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Majid & Bela</title>
 
-<title>Majid & Bela</title>
-
-<style>
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-    font-family:Georgia,"Times New Roman",serif;
-    background:#f5f0e7;
-    color:#3e4939;
-}
-
-section{
-    padding:70px 20px;
-}
-
-.cover{
-    min-height:100vh;
-    background:
-        linear-gradient(rgba(0,0,0,.48),rgba(0,0,0,.55)),
-        url("sampul.jpg") center center/cover no-repeat;
-    color:white;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-}
-
-.cover-content{
-    width:100%;
-    max-width:650px;
-}
-
-.subtitle{
-    font-size:14px;
-    letter-spacing:6px;
-    margin-bottom:20px;
-}
-
-.cover h1{
-    font-size:clamp(55px,15vw,100px);
-    font-weight:normal;
-    line-height:.95;
-    margin-bottom:30px;
-}
-
-.date{
-    font-size:18px;
-    margin-bottom:8px;
-}
-
-.location{
-    font-size:17px;
-    line-height:1.6;
-    margin-bottom:35px;
-}
-
-.open-button{
-    background:#dfc68f;
-    color:#394333;
-    border:0;
-    border-radius:50px;
-    padding:17px 38px;
-    font-size:17px;
-    cursor:pointer;
-    box-shadow:0 5px 20px rgba(0,0,0,.2);
-}
-
-.open-button:active{
-    transform:scale(.96);
-}
-
-.title{
-    text-align:center;
-    margin-bottom:35px;
-}
-
-.title small{
-    letter-spacing:4px;
-    font-size:12px;
-}
-
-.title h2{
-    font-size:38px;
-    font-weight:normal;
-    margin-top:10px;
-}
-
-.quote{
-    max-width:650px;
-    margin:auto;
-    text-align:center;
-    font-style:italic;
-    font-size:17px;
-}
-
-.couple{
-    max-width:900px;
-    margin:auto;
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:35px;
-}
-
-.person{
-    text-align:center;
-}
-
-.person img{
-    width:100%;
-    max-width:320px;
-    height:410px;
-    object-fit:cover;
-    border-radius:160px 160px 20px 20px;
-}
-
-.person h3{
-    font-size:30px;
-    font-weight:normal;
-    margin-top:18px;
-}
-
-.person p{
-    margin-top:5px;
-}
-
-.bio{
-    max-width:320px;
-    margin:20px auto;
-    padding:20px;
-    text-align:left;
-    background:#fffdf8;
-    border-radius:15px;
-    box-shadow:0 4px 15px rgba(0,0,0,.07);
-}
-
-.countdown-section{
-    background:#59644d;
-    color:white;
-    text-align:center;
-}
-
-.countdown{
-    max-width:600px;
-    margin:auto;
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:8px;
-}
-
-.count{
-    padding:15px 5px;
-    background:rgba(255,255,255,.12);
-    border-radius:12px;
-}
-
-.count strong{
-    display:block;
-    font-size:30px;
-}
-
-.count span{
-    font-size:11px;
-}
-
-.event{
-    max-width:650px;
-    margin:auto;
-    padding:35px 20px;
-    text-align:center;
-    background:#fffdf8;
-    border-radius:20px;
-    box-shadow:0 5px 20px rgba(0,0,0,.08);
-}
-
-.event h3{
-    font-size:30px;
-    font-weight:normal;
-    margin-bottom:15px;
-}
-
-.map-button{
-    display:inline-block;
-    margin-top:20px;
-    padding:14px 28px;
-    background:#59644d;
-    color:white;
-    border-radius:40px;
-    text-decoration:none;
-}
-
-.gallery{
-    max-width:900px;
-    margin:auto;
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:10px;
-}
-
-.gallery img{
-    width:100%;
-    height:300px;
-    object-fit:cover;
-    border-radius:12px;
-}
-
-.gallery img:first-child{
-    grid-column:span 2;
-    height:430px;
-}
-
-.closing{
-    background:#59644d;
-    color:white;
-    text-align:center;
-}
-
-.closing h2{
-    font-size:42px;
-    font-weight:normal;
-    margin:15px 0;
-}
-
-footer{
-    background:#30372c;
-    color:white;
-    text-align:center;
-    padding:25px;
-}
-
-#musicControl{
-    display:none;
-    position:fixed;
-    right:18px;
-    bottom:18px;
-    width:50px;
-    height:50px;
-    border:0;
-    border-radius:50%;
-    background:#dfc68f;
-    font-size:20px;
-    z-index:9999;
-}
-
-@media(max-width:650px){
-
-    section{
-        padding:55px 16px;
+  <style>
+    * {
+      box-sizing: border-box;
     }
 
-    .cover h1{
-        font-size:58px;
+    html {
+      scroll-behavior: smooth;
     }
 
-    .couple{
-        grid-template-columns:1fr;
+    body {
+      margin: 0;
+      font-family: Georgia, serif;
+      background: #f8f4eb;
+      color: #333;
     }
 
-    .person img{
-        max-width:300px;
+    .cover {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+      background: #1717a8;
     }
 
-    .count strong{
-        font-size:23px;
+    .cover img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.45;
     }
 
-    .count span{
-        font-size:9px;
+    .cover::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,80,0.25);
     }
 
-    .gallery{
-        grid-template-columns:1fr;
+    .cover-content {
+      position: relative;
+      z-index: 2;
+      color: white;
+      padding: 25px;
     }
 
-    .gallery img,
-    .gallery img:first-child{
-        grid-column:span 1;
-        height:330px;
+    .subtitle {
+      letter-spacing: 7px;
+      font-size: 18px;
+      margin-bottom: 20px;
     }
-}
-</style>
+
+    h1 {
+      font-size: 70px;
+      margin: 10px 0 30px;
+      line-height: 1;
+    }
+
+    .date {
+      font-size: 22px;
+      margin: 15px 0;
+    }
+
+    .location {
+      font-size: 20px;
+      line-height: 1.6;
+    }
+
+    #openInvitation {
+      margin-top: 30px;
+      padding: 17px 38px;
+      border: none;
+      border-radius: 40px;
+      background: #e5ca91;
+      color: #333;
+      font-size: 18px;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(0,0,0,.25);
+    }
+
+    #openInvitation:active {
+      transform: scale(.96);
+    }
+
+    section {
+      padding: 70px 20px;
+      text-align: center;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .couple-photo {
+      width: 100%;
+      max-width: 500px;
+      border-radius: 15px;
+      margin: 20px auto;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .gallery img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .hidden-content {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: 1s;
+    }
+
+    .show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 55px;
+      }
+
+      .subtitle {
+        font-size: 14px;
+        letter-spacing: 5px;
+      }
+
+      .date {
+        font-size: 18px;
+      }
+
+      .location {
+        font-size: 17px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<!-- MUSIK -->
-<audio id="backsound" loop>
+  <!-- MUSIK -->
+  <audio id="backsound" loop>
     <source src="backsound.mp3" type="audio/mpeg">
-</audio>
+  </audio>
 
+  <!-- COVER -->
+  <div class="cover" id="cover">
 
-<!-- SAMPUL -->
-<section class="cover">
+    <img src="sampul.jpg" alt="Majid dan Bela">
 
     <div class="cover-content">
 
-        <div class="subtitle">
-            THE WEDDING OF
-        </div>
+      <div class="subtitle">THE WEDDING OF</div>
 
-        <h1>Majid &amp; Bela</h1>
+      <h1>Majid &amp; Bela</h1>
 
-        <div class="date">
-            Minggu, 23 Agustus 2026
-        </div>
+      <div class="date">
+        Minggu, 23 Agustus 2026
+      </div>
 
-        <div class="location">
-            Kp Pasaran Peleton<br>
-            Bogor, Jawa Barat
-        </div>
+      <div class="location">
+        Kp Pasaran Peleton<br>
+        Bogor, Jawa Barat
+      </div>
 
-        <!-- TOMBOL -->
-        <button
-            class="open-button"
-            onclick="bukaUndangan()">
-            Buka Undangan
-        </button>
+      <button id="openInvitation">
+        Buka Undangan
+      </button>
 
     </div>
+  </div>
 
-</section>
+
+  <!-- ISI UNDANGAN -->
+  <section class="hidden-content" id="undangan">
+
+    <p>
+      "Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan
+      untukmu pasangan hidup dari jenis kamu sendiri, supaya kamu
+      merasa tenteram di hatinya..."
+    </p>
+
+    <p>QS. Ar-Rum: 21</p>
+
+    <h2>THE BRIDE &amp; GROOM</h2>
+
+    <h2>Dengan penuh cinta</h2>
+
+    <p>
+      Dengan memohon rahmat dan ridho Allah SWT,
+      kami bermaksud menyelenggarakan pernikahan kami.
+    </p>
+
+    <img
+      class="couple-photo"
+      src="mempelai-pria.jpg"
+      alt="Mempelai Pria"
+    >
+
+    <h2>Majid Darussalam</h2>
+    <p>Putra dari Bapak Ahri &amp; Ibu Murtapiah</p>
+
+    <img
+      class="couple-photo"
+      src="mempelai-wanita.jpg"
+      alt="Mempelai Wanita"
+    >
+
+    <h2>Bela Hindiyani</h2>
+    <p>Putri dari Bapak Juben &amp; Ibu Siti Fatimah</p>
+
+  </section>
 
 
-<!-- PEMBUKA -->
-<section>
+  <!-- GALERI -->
+  <section class="hidden-content">
 
-    <div class="title">
-        <small>ASSALAMUALAIKUM WARAHMATULLAHI WABARAKATUH</small>
-        <h2>Dengan penuh cinta</h2>
+    <h2>Galeri</h2>
+
+    <div class="gallery">
+      <img src="galeri-1.jpg" alt="">
+      <img src="galeri-2.jpg" alt="">
+      <img src="galeri-3.jpg" alt="">
+      <img src="galeri-4.jpg" alt="">
+      <img src="galeri-5.jpg" alt="">
     </div>
 
-    <div class="quote">
-
-        "Dan di antara tanda-tanda kekuasaan-Nya ialah Dia
-        menciptakan untukmu pasangan hidup dari jenis kamu
-        sendiri, supaya kamu merasa tenteram di sampingnya
-        dan dijadikan-Nya kasih sayang di antara kamu."
-
-        <br><br>
-
-        QS. Ar-Rum: 21
-
-    </div>
-
-</section>
+  </section>
 
 
-<!-- MEMPELAI -->
-<section>
+  <!-- JAVASCRIPT LANGSUNG DI SINI -->
+  <script>
 
-    <div class="title">
-        <small>THE BRIDE &amp; GROOM</small>
-        <h2>Majid &amp; Bela</h2>
-    </div>
+    const tombol = document.getElementById("openInvitation");
+    const musik = document.getElementById("backsound");
+    const isiUndangan = document.getElementById("undangan");
 
-    <div class="couple">
+    tombol.addEventListener("click", function () {
 
-        <div class="person">
+      // Putar backsound
+      musik.play().catch(function(error) {
+        console.log("Musik tidak dapat diputar:", error);
+      });
 
-            <img src="mempelai-pria.jpg" alt="Majid">
+      // Tampilkan isi
+      isiUndangan.classList.add("show");
 
-            <h3>Majid Darussalam</h3>
+      // Scroll otomatis ke bawah
+      window.scrollTo({
+        top: window.innerHeight,
+        behavior: "smooth"
+      });
 
-            <p>Majid</p>
+      // Auto scroll pelan setelah tombol ditekan
+      setTimeout(function() {
 
-            <div class="bio">
+        let autoScroll = setInterval(function() {
 
-                <strong>Putra dari:</strong><br>
-                Bapak Ahri<br>
-                Ibu Murtapiah
+          window.scrollBy({
+            top: 1,
+            left: 0,
+            behavior: "auto"
+          });
 
-                <br><br>
+          if (
+            window.innerHeight + window.scrollY
+            >= document.body.scrollHeight - 5
+          ) {
+            clearInterval(autoScroll);
+          }
 
-                <strong>Tanggal Lahir:</strong><br>
-                07 Agustus 
+        }, 50);
+
+      }, 1000);
+
+    });
+
+  </script>
+
+</body>
+</html>
