@@ -1,292 +1,179 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap');
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+  <title>Majid & Bela — Wedding Invitation</title>
 
-html {
-  scroll-behavior: smooth;
-}
+  <!-- WAJIB: memanggil style.css -->
+  <link rel="stylesheet" href="style.css">
+</head>
 
-body {
-  background: #f4f1e8;
-  color: #35483b;
-  font-family: 'Montserrat', sans-serif;
-}
+<body>
 
-.invitation {
-  max-width: 520px;
-  margin: auto;
-  background: #f9f7f0;
-  min-height: 100vh;
-  overflow: hidden;
-}
+  <main class="invitation">
 
-.cover {
-  min-height: 100vh;
-  background:
-    linear-gradient(
-      rgba(42, 65, 49, .30),
-      rgba(42, 65, 49, .55)
-    ),
-    url("sampul.jpg") center/cover no-repeat;
+    <!-- SAMPUL -->
+    <section class="cover">
+      <div class="cover-overlay">
+        <p class="small-title">THE WEDDING OF</p>
+        <h1>Majid &amp; Bela</h1>
 
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  padding: 60px 25px;
-  text-align: center;
-  color: white;
-}
+        <p class="date">Minggu, 23 Agustus 2026</p>
 
-.cover-overlay {
-  width: 100%;
-}
+        <p class="location">
+          Kp Pasaran Peleton<br>
+          Bogor, Jawa Barat
+        </p>
 
-.small-title {
-  font-size: 11px;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  margin-bottom: 12px;
-}
+        <a href="#undangan" class="button">
+          Buka Undangan
+        </a>
+      </div>
+    </section>
 
-h1,
-h2,
-h3 {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 600;
-}
 
-.cover h1 {
-  font-size: 58px;
-  line-height: 1;
-  margin-bottom: 20px;
-}
+    <!-- ISI UNDANGAN -->
+    <section id="undangan" class="content">
 
-.date {
-  font-size: 13px;
-  margin-bottom: 10px;
-}
+      <p class="small-title">THE WEDDING OF</p>
+      <h2>Majid &amp; Bela</h2>
 
-.location {
-  font-size: 12px;
-  line-height: 1.7;
-  margin-bottom: 25px;
-}
+      <p class="intro">
+        Dengan memohon rahmat dan ridho Allah SWT,
+        kami bermaksud menyelenggarakan pernikahan kami.
+      </p>
 
-.button {
-  display: inline-block;
-  padding: 13px 25px;
-  border: 1px solid #d8c59b;
-  background: #d8c59b;
-  color: #293d31;
-  text-decoration: none;
-  font-size: 11px;
-  letter-spacing: 1px;
-  border-radius: 30px;
-}
 
-.content {
-  text-align: center;
-}
+      <!-- AYAT -->
+      <div class="quote">
+        <p>
+          "Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan
+          untukmu pasangan hidup dari jenis kamu sendiri, supaya kamu
+          merasa tenteram hati dan dijadikan-Nya kasih sayang di antara kamu."
+        </p>
+        <span>QS. Ar-Rum: 21</span>
+      </div>
 
-.content > .small-title {
-  margin-top: 65px;
-}
 
-.content > h2 {
-  font-size: 45px;
-  margin-bottom: 15px;
-}
+      <!-- MEMPELAI PRIA -->
+      <div class="couple">
+        <div class="person">
+          <img src="mempelai-pria.jpg" alt="Majid Darussalam">
 
-.intro {
-  padding: 0 35px;
-  font-size: 13px;
-  line-height: 1.9;
-}
+          <p class="role">THE GROOM</p>
+          <h2>Majid Darussalam</h2>
+          <p>Majid</p>
+        </div>
 
-.quote {
-  margin: 50px 25px;
-  padding: 30px 20px;
-  border-top: 1px solid #d8c59b;
-  border-bottom: 1px solid #d8c59b;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 18px;
-  line-height: 1.7;
-  font-style: italic;
-}
 
-.quote span {
-  display: block;
-  margin-top: 12px;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 10px;
-  font-style: normal;
-}
+        <div class="ampersand">&amp;</div>
 
-.couple {
-  padding: 20px;
-}
 
-.person {
-  margin-bottom: 40px;
-}
+        <!-- MEMPELAI WANITA -->
+        <div class="person">
+          <img src="mempelai-wanita.jpg" alt="Bela Hindiyani">
 
-.person img {
-  width: 100%;
-  display: block;
-  margin-bottom: 22px;
-}
+          <p class="role">THE BRIDE</p>
+          <h2>Bela Hindiyani</h2>
+          <p>Bela</p>
+        </div>
+      </div>
 
-.person .role {
-  font-size: 10px;
-  letter-spacing: 3px;
-  margin-bottom: 8px;
-}
 
-.person h2 {
-  font-size: 36px;
-}
+      <!-- ACARA -->
+      <section class="event">
+        <p class="small-title">SAVE THE DATE</p>
 
-.ampersand {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 55px;
-  color: #c2a96d;
-  margin: -15px 0 25px;
-}
+        <h2>Akad &amp; Resepsi</h2>
 
-.event {
-  margin-top: 30px;
-  padding: 55px 25px;
-  background: #e8eadf;
-}
+        <p class="event-date">
+          Minggu, 23 Agustus 2026
+        </p>
 
-.event h2 {
-  font-size: 40px;
-  margin-bottom: 12px;
-}
+        <div class="event-time">
+          <div>
+            <strong>08.00 WIB</strong>
+            <span>Akad Nikah</span>
+          </div>
 
-.event-date {
-  font-size: 13px;
-  margin-bottom: 30px;
-}
+          <div>
+            <strong>09.00 WIB</strong>
+            <span>Resepsi — selesai</span>
+          </div>
+        </div>
 
-.event-time {
-  display: flex;
-  gap: 15px;
-  justify-content: center;
-  margin-bottom: 30px;
-}
+        <p class="address">
+          Kp Pasaran Peleton RT 01 RW 02<br>
+          Desa Pasaran, Kecamatan Pamijahan<br>
+          Kabupaten Bogor, Jawa Barat
+        </p>
 
-.event-time div {
-  flex: 1;
-  padding: 20px 10px;
-  background: #f9f7f0;
-  border: 1px solid #d8c59b;
-}
+        <a
+          href="https://www.google.com/maps/search/?api=1&query=Kp%20Pasaran%20Peleton%20RT%2001%20RW%2002%20Desa%20Pasaran%20Kecamatan%20Pamijahan%20Kabupaten%20Bogor%20Jawa%20Barat"
+          target="_blank"
+          class="button">
+          Lihat Lokasi
+        </a>
+      </section>
 
-.event-time strong,
-.event-time span {
-  display: block;
-}
 
-.event-time strong {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 25px;
-}
+      <!-- GALERI -->
+      <section class="gallery">
+        <p class="small-title">OUR MOMENTS</p>
+        <h2>Galeri</h2>
 
-.event-time span {
-  font-size: 9px;
-  margin-top: 6px;
-}
+        <div class="gallery-grid">
+          <img src="galeri-1.jpg" alt="Majid dan Bela">
+          <img src="galeri-2.jpg" alt="Majid dan Bela">
+          <img src="galeri-3.jpg" alt="Majid dan Bela">
+          <img src="galeri-4.jpg" alt="Majid dan Bela">
+          <img src="galeri-5.jpg" alt="Majid dan Bela">
+        </div>
+      </section>
 
-.address {
-  font-size: 12px;
-  line-height: 1.8;
-  margin-bottom: 25px;
-}
 
-.gallery {
-  padding: 60px 15px;
-}
+      <!-- BIODATA -->
+      <section class="biodata">
+        <p class="small-title">BRIDE &amp; GROOM</p>
+        <h2>Dengan penuh cinta</h2>
 
-.gallery h2 {
-  font-size: 42px;
-  margin-bottom: 25px;
-}
+        <div class="bio-card">
+          <h3>Majid Darussalam</h3>
+          <p>Nama panggilan: Majid</p>
+          <p>07 Agustus 1999</p>
+          <p>Anak ke-5 / bungsu</p>
+          <p>Putra dari Bapak Ahri &amp; Ibu Murtapiah</p>
+        </div>
 
-.gallery-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px;
-}
+        <div class="bio-card">
+          <h3>Bela Hindiyani</h3>
+          <p>Nama panggilan: Bela</p>
+          <p>06 September 2003</p>
+          <p>Anak kedua dari 4 bersaudara</p>
+          <p>Putri dari Bapak Juben &amp; Ibu Siti Fatimah (Empat)</p>
+        </div>
+      </section>
 
-.gallery-grid img {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-  display: block;
-}
 
-.gallery-grid img:first-child {
-  grid-column: span 2;
-  aspect-ratio: 16 / 10;
-}
+      <!-- PENUTUP -->
+      <section class="closing">
+        <h2>Terima Kasih</h2>
+        <p>
+          Merupakan suatu kehormatan dan kebahagiaan bagi kami
+          apabila Bapak/Ibu/Saudara/i berkenan hadir
+          untuk memberikan doa restu.
+        </p>
 
-.biodata {
-  padding: 60px 25px;
-  background: #35483b;
-  color: white;
-}
+        <h3>Majid &amp; Bela</h3>
+      </section>
 
-.biodata h2 {
-  font-size: 40px;
-  margin-bottom: 30px;
-}
+    </section>
 
-.bio-card {
-  padding: 25px 0;
-  border-top: 1px solid rgba(255,255,255,.3);
-}
+  </main>
 
-.bio-card h3 {
-  font-size: 28px;
-  margin-bottom: 12px;
-}
+  <script src="script.js"></script>
 
-.bio-card p {
-  font-size: 11px;
-  line-height: 1.8;
-}
-
-.closing {
-  padding: 70px 30px;
-}
-
-.closing h2 {
-  font-size: 45px;
-  margin-bottom: 20px;
-}
-
-.closing p {
-  font-size: 12px;
-  line-height: 1.9;
-}
-
-.closing h3 {
-  font-size: 32px;
-  margin-top: 30px;
-  color: #a68a50;
-}
-
-@media (min-width: 700px) {
-  body {
-    padding: 30px 0;
-  }
-
-  .invitation {
-    box-shadow: 0 10px 50px rgba(0,0,0,.15);
-  }
-}
+</body>
+</html>
