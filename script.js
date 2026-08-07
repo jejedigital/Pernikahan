@@ -1,59 +1,51 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-    const cover = document.getElementById("cover");
-    const main = document.getElementById("main");
-    const openBtn = document.getElementById("openBtn");
+  const button = document.querySelector(".cover .button");
 
-    if (openBtn) {
-        openBtn.addEventListener("click", function () {
-            cover.classList.add("hidden");
-            main.classList.remove("hidden");
+  let scrolling = false;
+  let scrollTimer = null;
 
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
+  if (button) {
+    button.addEventListener("click", function () {
+
+      // Mulai backsound
+      const music = document.getElementById("backsound");
+
+      if (music) {
+        music.volume = 0.5;
+        music.play().catch(function () {
+          console.log("Browser menolak autoplay musik.");
         });
-    }
+      }
 
-    // Countdown menuju hari pernikahan
-    const targetDate = new Date("2026-08-23T08:00:00+07:00");
+      // Scroll perlahan ke isi undangan
+      if (!scrolling) {
+        scrolling = true;
 
-    function updateCountdown() {
-        const now = new Date();
-        const distance = targetDate - now;
+        setTimeout(function () {
 
-        const daysEl = document.getElementById("days");
-        const hoursEl = document.getElementById("hours");
-        const minutesEl = document.getElementById("minutes");
-        const secondsEl = document.getElementById("seconds");
+          scrollTimer = setInterval(function () {
 
-        if (distance <= 0) {
-            if (daysEl) daysEl.textContent = "0";
-            if (hoursEl) hoursEl.textContent = "0";
-            if (minutesEl) minutesEl.textContent = "0";
-            if (secondsEl) secondsEl.textContent = "0";
-            return;
-        }
+            window.scrollBy({
+              top: 1,
+              left: 0,
+              behavior: "auto"
+            });
 
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor(
-            (distance / (1000 * 60 * 60)) % 24
-        );
-        const minutes = Math.floor(
-            (distance / (1000 * 60)) % 60
-        );
-        const seconds = Math.floor(
-            (distance / 1000) % 60
-        );
+            if (
+              window.innerHeight + window.scrollY
+              >= document.documentElement.scrollHeight - 5
+            ) {
+              clearInterval(scrollTimer);
+              scrolling = false;
+            }
 
-        if (daysEl) daysEl.textContent = days;
-        if (hoursEl) hoursEl.textContent = hours;
-        if (minutesEl) minutesEl.textContent = minutes;
-        if (secondsEl) secondsEl.textContent = seconds;
-    }
+          }, 35);
 
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
+        }, 500);
+      }
+
+    });
+  }
 
 });
