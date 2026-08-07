@@ -33,10 +33,27 @@
       <p class="eyebrow">MOMEN BAHAGIA</p>
       <h2>Majid &amp; Bela</h2>
       <p>Dengan memohon rahmat dan ridho Allah SWT, kami bermaksud menyelenggarakan pernikahan kami.</p>
+
+      <!-- Foto Utama Pengantin -->
+      <div style="text-align: center; margin: 25px 0;">
+        <img src="foto-utama.jpg" alt="Foto Pengantin" style="width: 180px; height: 180px; object-fit: cover; border-radius: 50%; border: 3px solid #d4af37; box-shadow: 0 4px 10px rgba(0,0,0,0.5);">
+      </div>
+
       <div class="couple">
         <div><h3>Majid Darussalam</h3><p>Majid</p></div>
         <div class="amp">&amp;</div>
         <div><h3>Bela Hindiyani</h3><p>Bela</p></div>
+      </div>
+
+      <!-- Galeri Foto Tambahan -->
+      <div style="text-align: center; margin-top: 40px;">
+        <p class="eyebrow">GALERI FOTO</p>
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 15px;">
+          <img src="galeri1.jpg" alt="Foto 1" style="width: 45%; max-width: 200px; height: 130px; object-fit: cover; border-radius: 10px; border: 1px solid #d4af37;">
+          <img src="galeri2.jpg" alt="Foto 2" style="width: 45%; max-width: 200px; height: 130px; object-fit: cover; border-radius: 10px; border: 1px solid #d4af37;">
+          <img src="galeri3.jpg" alt="Foto 3" style="width: 45%; max-width: 200px; height: 130px; object-fit: cover; border-radius: 10px; border: 1px solid #d4af37;">
+          <img src="galeri4.jpg" alt="Foto 4" style="width: 45%; max-width: 200px; height: 130px; object-fit: cover; border-radius: 10px; border: 1px solid #d4af37;">
+        </div>
       </div>
     </section>
 
@@ -78,6 +95,12 @@
   </main>
 
   <button id="musicBtn" class="music" aria-label="Musik">♫</button>
+
+  <!-- Tag Audio untuk Musik Backsound -->
+  <audio id="myAudio" loop>
+    <source src="musik.mp3" type="audio/mpeg">
+  </audio>
+
   <script src="script.js"></script>
 </body>
 </html>
